@@ -22,10 +22,8 @@ function LoginPage() {
                     </h7>
                     <br />
                     <input className="loginInput" placeholder="username" onChange={(e) => setUsername(e.target.value)} />
-                    <text>{username}</text>
                     <br />
                     <input className="loginInput" placeholder="password" onChange={(e) => setPassword(e.target.value)} />
-                    <text>{password}</text>
                     <br />
                     <button onClick={routeChange}>Create Account</button>
                     <button onClick={() => setUsername(" ")}>Login</button>

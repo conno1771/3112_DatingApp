@@ -4,6 +4,7 @@ import { useState } from 'react';
 function RegisterPage() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('');
 
     return (
         <div className="App">
@@ -14,13 +15,10 @@ function RegisterPage() {
                     </h7>
                     <br />
                     <input className="loginInput" placeholder="email" onChange={(e) => setUsername(e.target.value)} />
-                    <text>{username}</text>
                     <br />
                     <input className="loginInput" placeholder="username" onChange={(e) => setUsername(e.target.value)} />
-                    <text>{username}</text>
                     <br />
                     <input className="loginInput" placeholder="password" onChange={(e) => setPassword(e.target.value)} />
-                    <text>{password}</text>
                     <br />
                     <button onClick={() => setUsername(" ")}>Register</button>
                 </div>
