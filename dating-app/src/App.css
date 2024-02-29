@@ -1,0 +1,44 @@
+.App {
+  text-align: center;
+  background-color: #46475d;
+  color: #8a7868;
+}
+
+.App-header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: wheat;
+}
+
+.loginBox {
+  width: 10em;
+  border-radius: 15px;
+  border: 1px solid wheat;
+  padding: 2%
+}
+
+.loginInput {
+  color: wheat;
+  margin-top: 10%;
+  min-height: 30px;
+  min-width: 80%;
+  border-radius: 5px;
+  border: 1px solid wheat;
+  background-color: #46475d;
+}
+
+button {
+  color: wheat;
+  background-color: #46475d;
+  border: 1px hidden wheat;
+  margin-top: 10%;
+  margin-left: 32px;
+  margin-right: 32px;
+  padding: 4px;
+  padding-left: 7px;
+  padding-right: 7px;
+}
