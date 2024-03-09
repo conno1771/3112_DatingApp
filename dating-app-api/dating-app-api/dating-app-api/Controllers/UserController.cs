@@ -1,4 +1,4 @@
-﻿using dating_app_api.DAL;
+using dating_app_api.DAL;
 using dating_app_api.DAL.DAO;
 using dating_app_api.DAL.DomainClasses;
 using dating_app_api.Helpers;
@@ -58,6 +58,42 @@ namespace dating_app_api.Controllers
             else
             {
                 helper.Token = "user registration failed - email already in use";
+            }
+            return helper;
+        }
+        [HttpPost]
+        [Route("/Login")]
+        [Produces("application/json")]
+        [AllowAnonymous]
+        public async Task<ActionResult<UserHelper>> Login(UserHelper helper)
+        {
+            UserDAO dao = new(_ctx!);
+            User? user;
+            if (helper.Username != null && helper.Username != "") { user = await dao.GetByUsername(helper.Username); }
+            else
+            {
+                user = await dao.GetByEmail(helper.Email);
+            }
+            if (user != null)
+            {
+                if (helper.Passphrase == user.Passphrase)
+                {
+                    helper.Token = "Login Successful";
+                    helper.Username = user.Username;
+                    helper.Email = user.Email;
+                    helper.Age = user.Age;
+                    helper.Gender = user.Gender == null ? "" : user.Gender;
+                    helper.FirstName = user.Firstname;
+                    helper.LastName = user.Lastname;
+                }
+                else
+                {
+                    helper.Token = "Login Unsuccessful: Incorrect Password";
+                }
+            }
+            else
+            {
+                helper.Token = "Login Unsuccessful: User does not exist";
             }
             return helper;
         }
