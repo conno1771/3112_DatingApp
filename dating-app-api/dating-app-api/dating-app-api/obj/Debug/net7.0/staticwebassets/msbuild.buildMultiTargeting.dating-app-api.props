@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\dating-app-api.props" />
+</Project>
