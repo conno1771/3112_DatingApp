@@ -22,5 +22,10 @@ namespace dating_app_api.DAL.DAO
             User? user = await _db.Users!.FirstOrDefaultAsync(x => x.Email == email);
             return user;
         }
+        public async Task<User?> GetByUsername(string? username)
+        {
+            User? user = await _db.Users!.FirstOrDefaultAsync(x => x.Username == username);
+            return user;
+        }
     }
 }
