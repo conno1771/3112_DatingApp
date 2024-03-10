@@ -3144,32 +3144,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ckcow\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\grayr\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Fanshawe\\CPA3_Winter_2024\\INFO-3112\\dating-app-api\\dating-app-api\\dating-app-api\\dating-app-api.csproj",
+      "projectUniqueName": "C:\\Users\\grayr\\Desktop\\HW\\datingApp\\3112_DatingApp\\dating-app-api\\dating-app-api\\dating-app-api\\dating-app-api.csproj",
       "projectName": "dating-app-api",
-      "projectPath": "C:\\Fanshawe\\CPA3_Winter_2024\\INFO-3112\\dating-app-api\\dating-app-api\\dating-app-api\\dating-app-api.csproj",
-      "packagesPath": "C:\\Users\\ckcow\\.nuget\\packages\\",
-      "outputPath": "C:\\Fanshawe\\CPA3_Winter_2024\\INFO-3112\\dating-app-api\\dating-app-api\\dating-app-api\\obj\\",
+      "projectPath": "C:\\Users\\grayr\\Desktop\\HW\\datingApp\\3112_DatingApp\\dating-app-api\\dating-app-api\\dating-app-api\\dating-app-api.csproj",
+      "packagesPath": "C:\\Users\\grayr\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\grayr\\Desktop\\HW\\datingApp\\3112_DatingApp\\dating-app-api\\dating-app-api\\dating-app-api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\ckcow\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\grayr\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
-        "C:\\Fanshawe\\MyNuGet": {},
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
+        "C:\\Users\\grayr\\Desktop\\MyNuGet": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -3224,7 +3224,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
       }
     }
   }

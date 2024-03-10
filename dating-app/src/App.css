@@ -18,12 +18,12 @@
   width: 10em;
   border-radius: 15px;
   border: 1px solid wheat;
-  padding: 2%
+  padding: 20px
 }
 
 .loginInput {
   color: wheat;
-  margin-top: 10%;
+  margin-top: 15px;
   min-height: 30px;
   min-width: 80%;
   border-radius: 5px;
@@ -31,14 +31,48 @@
   background-color: #46475d;
 }
 
-button {
+.button {
   color: wheat;
   background-color: #46475d;
-  border: 1px hidden wheat;
-  margin-top: 10%;
-  margin-left: 32px;
-  margin-right: 32px;
-  padding: 4px;
+  border: 1px solid wheat;
+  border-radius: 5px;
+  margin: auto;
+  margin: 4px;
   padding-left: 7px;
   padding-right: 7px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.genderButton {
+  color: wheat;
+  background-color: #46475d;
+  border: 1px solid wheat;
+  border-radius: 5px;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.genderList {
+  list-style: none;
+  border-radius: 15px;
+  border: 1px solid wheat;
+  padding: 2%;
+  width: 80%;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+li {
+  line-height: 0.1em;
+}
+
+.genders {
+  border-left: 20%;
 }
