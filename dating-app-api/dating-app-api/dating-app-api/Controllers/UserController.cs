@@ -97,5 +97,33 @@ namespace dating_app_api.Controllers
             }
             return helper;
         }
+        [HttpPost]
+        [Route("/AddUserSkill")]
+        [Produces("application/json")]
+        [AllowAnonymous]
+        public async Task<ActionResult<UserSkillHelper>> AddUserSkill(string email, string skill)
+        {
+            UserDAO userDAO = new(_ctx!);
+            UserSkillDAO userSkillDAO = new(_ctx!);
+            User? user = await userDAO.GetByEmail(email);
+            if (user == null)
+            {
+                return new UserSkillHelper(0, "", "ERROR: User does not exist");
+            }
+            if (await userSkillDAO.GetUserSkill(user.Id, skill) != null)
+            {
+                return new UserSkillHelper(user.Id, skill, "User and Skill are already linked");
+            }
+            UserSkill userSkill = await userSkillDAO.AddUserSkill(user.Id, skill);
+
+            if (userSkill.UserID > 1 && userSkill.Skill != "")
+            {
+                return new UserSkillHelper(userSkill.UserID, skill, "Skill Added Successfully");
+            }
+            else
+            {
+                return new UserSkillHelper(userSkill.UserID, skill, "Skill Not Added");
+            }
+        }
     }
 }
