@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
 namespace dating_app_api.DAL.DomainClasses
@@ -19,5 +19,9 @@ namespace dating_app_api.DAL.DomainClasses
         [Required]
         public int? Age { get; set; }
         public string? Gender { get; set; }
+        [Required]
+        public bool? Paid { get; set; }
+        [Required]
+        public bool? IsAdmin { get; set; }
     }
 }
