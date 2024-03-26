@@ -10,5 +10,7 @@
         public string? Token { get; set; } = "";
         public int? Age { get; set; } = 0;
         public string? Gender { get; set; } = "";
+        public bool? IsPaid { get; set; } = false;
+        public bool? Admin { get; set; } = false;
     }
 }
