@@ -7,5 +7,7 @@ CREATE TABLE Users (
 	Email nvarchar(25) not null,
 	Passphrase nvarchar(64) not null,
 	Age int check (Age > 17) not null,
-	Gender varchar(6) check (Gender in ('Man', 'Woman', 'Other', ''))
+	Gender varchar(6) check (Gender in ('Man', 'Woman', 'Other', '')),
+	Paid bit not null,
+	IsAdmin bit not null
 );
