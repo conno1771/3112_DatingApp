@@ -1,4 +1,4 @@
-﻿using dating_app_api.DAL.DomainClasses;
+using dating_app_api.DAL.DomainClasses;
 using Microsoft.EntityFrameworkCore;
 using System;
 
@@ -26,6 +26,16 @@ namespace dating_app_api.DAL.DAO
         {
             User? user = await _db.Users!.FirstOrDefaultAsync(x => x.Username == username);
             return user;
+        }
+        public async Task<bool> IsPaidUser(string? email)
+        {
+            User? user = await GetByEmail(email);
+            return user!.Paid == true;
+        }
+        public async Task<bool> IsAdmin(string? email)
+        {
+            User? user = await GetByEmail(email);
+            return user!.IsAdmin == true;
         }
     }
 }
