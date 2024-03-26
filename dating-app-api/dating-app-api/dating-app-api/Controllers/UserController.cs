@@ -37,7 +37,9 @@ namespace dating_app_api.Controllers
                     Username = helper.Username!,
                     Email = helper.Email!,
                     Passphrase = helper.Passphrase!,
-                    Age = helper.Age!
+                    Age = helper.Age!,
+                    Paid = helper.Paid!,
+                    IsAdmin = helper.IsAdmin!
                 };
                 dbUser = await dao.Register(dbUser);
                 if (dbUser.Id > 0)
@@ -85,6 +87,8 @@ namespace dating_app_api.Controllers
                     helper.Gender = user.Gender == null ? "" : user.Gender;
                     helper.FirstName = user.Firstname;
                     helper.LastName = user.Lastname;
+                    helper.Paid = user.Paid;
+                    helper.IsAdmin = user.IsAdmin;
                 }
                 else
                 {
@@ -123,6 +127,63 @@ namespace dating_app_api.Controllers
             else
             {
                 return new UserSkillHelper(userSkill.UserID, skill, "Skill Not Added");
+            }
+        }
+        [HttpGet]
+        [Route("/IsUserPaid")]
+        [AllowAnonymous]
+        public async Task<ActionResult<bool>> IsUserPaid(string email)
+        {
+            UserDAO uDAO = new(_ctx!);
+            bool isPaid = await uDAO.IsPaidUser(email);
+            return isPaid;
+        }
+        [HttpGet]
+        [Route("/IsAdmin")]
+        [AllowAnonymous]
+        public async Task<ActionResult<bool>> IsUserAdmin(string email)
+        {
+            UserDAO uDAO = new(_ctx!);
+            bool isAdmin = await uDAO.IsAdmin(email);
+            return isAdmin;
+        }
+        [HttpGet]
+        [Route("/GetUser")]
+        [AllowAnonymous]
+        public async Task<ActionResult<UserHelper>> GetUser(string email)
+        {
+            UserDAO uDAO = new(_ctx);
+            User? user = await uDAO.GetByEmail(email);
+            if (user == null)
+            {
+                return new UserHelper()
+                {
+                    Token = "User does not exist",
+                    Username = "",
+                    Email = "",
+                    Age = 0,
+                    Gender = "",
+                    FirstName = "",
+                    LastName = "",
+                    Paid = false,
+                    IsAdmin = false
+                };
+            }
+            else
+            {
+                return new UserHelper()
+                {
+                    Token = "",
+                    Username = user.Username,
+                    Email = user.Email,
+                    Age = user.Age,
+                    Gender = user.Gender == null ? "" : user.Gender,
+                    FirstName = user.Firstname,
+                    LastName = user.Lastname,
+                    Paid = user.Paid,
+                    IsAdmin = user.IsAdmin,
+                    Passphrase = user.Passphrase
+                };
             }
         }
     }
