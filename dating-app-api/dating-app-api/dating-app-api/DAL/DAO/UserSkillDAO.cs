@@ -1,4 +1,4 @@
-﻿using dating_app_api.DAL.DomainClasses;
+using dating_app_api.DAL.DomainClasses;
 
 namespace dating_app_api.DAL.DAO
 {
@@ -11,7 +11,7 @@ namespace dating_app_api.DAL.DAO
         }
         public async Task<UserSkill> AddUserSkill(int uid, string skill)
         {
-            UserSkill? userSkill = new UserSkill(uid, skill); 
+            UserSkill? userSkill = new UserSkill(uid, skill);
             //using try catch because skill must be one of those in the skill table
             //should only throw exception during testing
             try
@@ -31,6 +31,15 @@ namespace dating_app_api.DAL.DAO
         {
             UserSkill? userSkill = await _db.UserSkills!.FindAsync(uid, skill);
             return userSkill;
+        }
+        public async Task<List<UserSkill>> GetUserSkills(int uid)
+        {
+            List<UserSkill?>? userSkills = _db.UserSkills!.Where(u => u.UserID == uid).ToList()!;
+            if (userSkills.Count == 0)
+            {
+                return new List<UserSkill>();
+            }
+            return userSkills!;
         }
     }
 }
