@@ -112,21 +112,21 @@ namespace dating_app_api.Controllers
             User? user = await userDAO.GetByEmail(email);
             if (user == null)
             {
-                return new UserSkillHelper(0, "", "ERROR: User does not exist");
+                return new UserSkillHelper() { UserId = 0, Skill = "", Token = "ERROR: User does not exist" };
             }
             if (await userSkillDAO.GetUserSkill(user.Id, skill) != null)
             {
-                return new UserSkillHelper(user.Id, skill, "User and Skill are already linked");
+                return new UserSkillHelper() { UserId = user.Id, Skill = skill, Token = "ERROR: User and Skill are already linked" };
             }
             UserSkill userSkill = await userSkillDAO.AddUserSkill(user.Id, skill);
 
             if (userSkill.UserID > 1 && userSkill.Skill != "")
             {
-                return new UserSkillHelper(userSkill.UserID, skill, "Skill Added Successfully");
+                return new UserSkillHelper() { UserId = userSkill.UserID, Skill = userSkill.Skill, Token = "Skill Added" };
             }
             else
             {
-                return new UserSkillHelper(userSkill.UserID, skill, "Skill Not Added");
+                return new UserSkillHelper() { UserId = userSkill.UserID, Skill = userSkill.Skill, Token = "ERROR: Skill not added" };
             }
         }
         [HttpGet]
@@ -185,6 +185,33 @@ namespace dating_app_api.Controllers
                     Passphrase = user.Passphrase
                 };
             }
+        }
+        [HttpGet]
+        [Route("/GetUserSkills")]
+        [AllowAnonymous]
+        public async Task<ActionResult<List<string>>> GetUserSkills(string email)
+        {
+            UserDAO uDAO = new(_ctx);
+            UserSkillDAO usDAO = new(_ctx);
+
+            User? user = await uDAO.GetByEmail(email);
+
+            if (user == null)
+            {
+                return new List<string>() { "ERROR: User does not exist" };
+            }
+
+            List<UserSkill?> userSkills = await usDAO.GetUserSkills(user.Id);
+            if (userSkills.Count == 0)
+            {
+                return new List<string>();
+            }
+            List<string> userSkillStrings = new List<string>();
+            foreach (var item in userSkills)
+            {
+                userSkillStrings.Add(item!.Skill);
+            }
+            return userSkillStrings;
         }
     }
 }
