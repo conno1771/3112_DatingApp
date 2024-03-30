@@ -1,47 +1,67 @@
 .App {
   text-align: center;
   background-color: #46475d;
-  color: #8a7868;
+  color: #46475d;
 }
 
 .App-header {
   min-height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: wheat;
+  color: #46475d;
 }
 
 .loginBox {
-  width: 10em;
+  width: 15em;
+  height: 10em;
   border-radius: 15px;
-  border: 1px solid wheat;
-  padding: 20px
+  border: 1px solid rgb(232, 206, 157);
+  padding: 20px;
+  background-color: rgb(246, 233, 208);
 }
-
+.homeBox {
+  width: 80vw;
+  height: 80vh;
+  border-radius: 15px;
+  border: 1px solid rgb(232, 206, 157);
+  padding: 20px;
+  background-color: rgb(246, 233, 208);
+}
 .loginInput {
-  color: wheat;
+  color: #46475d;
   margin-top: 15px;
   min-height: 30px;
   min-width: 80%;
   border-radius: 5px;
-  border: 1px solid wheat;
-  background-color: #46475d;
+  border: 1px solid #46475d;
+  background-color: rgb(246, 233, 208);
 }
-
+.registerBox {
+  width: 15em;
+  height: auto;
+  border-radius: 15px;
+  border: 1px solid rgb(232, 206, 157);
+  padding: 20px;
+  background-color: rgb(246, 233, 208);
+}
 .button {
   color: wheat;
   background-color: #46475d;
   border: 1px solid wheat;
   border-radius: 5px;
-  margin: auto;
-  margin: 4px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 20px;
   padding-left: 7px;
   padding-right: 7px;
   padding-top: 2px;
   padding-bottom: 2px;
+  width: 10vw;
+  height: 5vh;
 }
 
 .genderButton {
