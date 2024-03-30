@@ -1,52 +1,37 @@
-import "../App.css";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../App.css";
+import { useState, useEffect } from "react";
 
-function RegisterPage(props) {
+export const LoginPage = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [email, setEmail] = useState("");
-  const [age, setAge] = useState("");
-  const [gender, setGender] = useState("");
-  const [dropdown, setDropdown] = useState(false);
   const [status, setStatus] = useState("");
 
-  let navigate = useNavigate();
-
-  const loggedIn = () => {
-    let path = "/";
-    navigate(path);
-  };
-
-  const register = async () => {
+  const login = async () => {
     try {
-        let response = await fetch("https://localhost:7271/Register", {
-            method: "POST",
-    
-            headers: {
-              accept: "application/json",
-              "Content-Type": "application/json; charset=utf-8",
-            },
-        body: JSON.stringify({
-            "firstName": firstname,
-            "lastName": lastname,
-            "username": username,
-            "email": email,
-            "passphrase": password,
-            "token": "",
-            "age": age,
-            "gender": gender,
-            "paid": false,
-            "isAdmin": false
-          }),
-      });
-      let user = await response.json();
+      let login = "";
+      username.includes("@") ? (login = "email") : (login = "username");
+      let response = await fetch("https://localhost:7271/Login", {
+        method: "POST",
 
-      if (user.token.includes("user registration failed")) {
-        setStatus("Registration Failed: email already in use or age too young");
-      } else {
+        headers: {
+          accept: "application/json",
+          "Content-Type": "application/json; charset=utf-8",
+        },
+        body:JSON.stringify({ "firstName": "",
+        "lastName": "",
+        "username": "",
+        "email": username,
+        "passphrase": password,
+        "token": "",
+        "age": 0,
+        "gender": "",
+        "paid": false,
+        "isAdmin": false })
+      });
+
+      let user = await response.json();
+      if (user.token === "Login Successful") {
         props.user({
             age: user.age,
             email: user.email,
@@ -56,137 +41,68 @@ function RegisterPage(props) {
             password: user.password,
             gender: user.gender,
             isPaid: user.isPaid,
-            admin: user.Admin,
+            Admin: user.Admin,
           });
           console.log(props);
           loggedIn();
+      } else {
+        setStatus("Username or Password Incorrect")
       }
+
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handleDropdown = (e) => {
-    setGender(e.target.value);
-    setDropdown(!dropdown);
+  useEffect(() => {
+    if (props.userData.username !== undefined) {
+      loggedIn();
+    }
+  }, []);
+
+  let navigate = useNavigate();
+
+  const loggedIn = () => {
+    let path = "/home";
+    navigate(path);
   };
 
-  const handleDropdownOpen = () => {
-    setDropdown(!dropdown);
-  };
-  const changePasswordHandler = (e) => {
-    setPassword(e);
+  const routeChange = () => {
+    let path = "/register";
+    navigate(path);
   };
   return (
     <div className="App">
       <header className="App-header">
-        <div className="registerBox">
+        <div className="loginBox">
           <h7 className="boxheader" style={{ color: "#46475d", fontSize: 48 }}>
-            Register
+            Sign in
           </h7>
           <br />
           <input
-            style={{ color: "#46475d" }}
             className="loginInput"
-            placeholder="FirstName"
-            onChange={(e) => setFirstname(e.target.value)}
-          />
-          <br />
-          <input
-            className="loginInput"
-            placeholder="Lastname"
-            onChange={(e) => setLastname(e.target.value)}
-          />
-          <br />
-          <input
-            className="loginInput"
-            placeholder="Age"
-            onChange={(e) => setAge(e.target.value)}
-          />
-          <br />
-          <input
-            className="loginInput"
-            placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <br />
-          <input
-            className="loginInput"
-            placeholder="Username"
+            placeholder="username"
             onChange={(e) => setUsername(e.target.value)}
           />
           <br />
           <input
-              type="password"
-              id="password"
-              className="loginInput"
-              placeholder="Password"
-              onChange={(e) => changePasswordHandler(e.target.value)}
-            />
+            className="loginInput"
+            placeholder="password"
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
           <br />
-          {dropdown ? (
-            <div>
-              {gender !== "" ? (
-                <div>
-                  <text style={{ fontSize: "16px" }}>
-                    Currently Selected Gender: {gender}
-                  </text>
-                </div>
-              ) : null}
-              <ul className="genderList">
-                <li className="genders">
-                  <button
-                    className="button"
-                    value={"Man"}
-                    onClick={handleDropdown}
-                  >
-                    Man
-                  </button>
-                </li>
-                <li className="genders">
-                  <button
-                    className="button"
-                    value={"Woman"}
-                    onClick={handleDropdown}
-                  >
-                    Woman
-                  </button>
-                </li>
-                <li className="genders">
-                  <button
-                    className="button"
-                    value={"Other"}
-                    onClick={handleDropdown}
-                  >
-                    Other
-                  </button>
-                </li>
-              </ul>
-            </div>
-          ) : (
-            <div>
-              {gender !== "" ? (
-                <div>
-                  <text style={{ fontSize: "16px", color: "#46475d" }}>
-                    Currently Selected Gender: {gender}
-                  </text>
-                  <br />
-                </div>
-              ) : null}
-              <button className="genderButton" onClick={handleDropdownOpen}>
-                Gender
-              </button>
-              <br />
-            </div>
-          )}
-          <button className="button" onClick={register}>
-            Register
+          <div>
+          <button className="button" onClick={routeChange}>
+            Create Account
           </button>
+          <button className="button" onClick={login}>
+            Login
+          </button>
+          </div>
           <p>{status}</p>
         </div>
       </header>
     </div>
   );
-}
-
-export default RegisterPage;
+};
