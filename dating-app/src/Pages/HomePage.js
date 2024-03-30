@@ -2,9 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import '../App.css';
 import { useState, useEffect } from 'react';
 
-
-
-function LoginPage(props) {
+function HomePage(props) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [firstname, setFirstname] = useState("");
@@ -37,9 +35,9 @@ function LoginPage(props) {
     return (
         <div className="App">
             <header className="App-header">
-                <div className="loginBox">
+                <div className="homeBox">
                     <h7 className="boxheader">
-                        {age} {firstname} {lastname} {email}
+                        Age: {age} Name: {firstname} {lastname} Email: {email}
                     </h7>
                 </div>
             </header>
@@ -47,4 +45,4 @@ function LoginPage(props) {
     );
 }
 
-export default LoginPage;
+export default HomePage;
