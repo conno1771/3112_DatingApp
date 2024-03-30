@@ -1,11 +1,11 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { useState } from 'react'
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
-import HomePage from './pages/HomePage';
+import { LoginPage } from './Pages/LoginPage';
+import RegisterPage from './Pages/RegisterPage';
+import HomePage from './Pages/HomePage';
 
-function App() {
+const App = () => {
   const [toChild, setToChild] = useState([]);
 
   const getUserFromChild = (childProps) => {
@@ -16,7 +16,9 @@ function App() {
       lastname: childProps.lastname,
       username: childProps.username,
       password: childProps.password,
-      gender: childProps.gender
+      gender: childProps.gender,
+      isPaid: childProps.isPaid,
+      Admin: childProps.Admin
     })
   }
   return (
