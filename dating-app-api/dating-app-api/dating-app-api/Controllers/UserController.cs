@@ -213,5 +213,26 @@ namespace dating_app_api.Controllers
             }
             return userSkillStrings;
         }
+        [HttpPost]
+        [Route("/AddReview")]
+        [Produces("application/json")]
+        [AllowAnonymous]
+        public async Task<ActionResult<ReviewHelper>> AddReview(int uid, int quality)
+        {
+            UserDAO userDAO = new(_ctx);
+            UserReview? ur = await userDAO.AddReview(uid, quality);
+            ReviewHelper? helper = new ReviewHelper();
+            if (ur == null)
+            {
+                helper.Token = "Review not added: User does not exist or Quality is not between 0 and 5";
+                return helper;
+            }
+            helper.Id = ur.Id;
+            helper.Quality = ur.Quality;
+            helper.UserId = ur.UserId;
+            helper.ReviewDate = ur.ReviewDate.ToString();
+            helper.Token = "Review successfuly added";
+            return helper;
+        }
     }
 }
