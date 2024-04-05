@@ -37,5 +37,25 @@ namespace dating_app_api.DAL.DAO
             User? user = await GetByEmail(email);
             return user!.IsAdmin == true;
         }
+        public async Task<UserReview?> AddReview(int uid, int quality)
+        {
+            User? user = await _db.Users!.FirstOrDefaultAsync(x => x.Id == uid);
+            if (user == null)
+            {
+                return null;
+            } else if (quality > 5 || quality < 0)
+            {
+                return null;
+            }
+            UserReview ur = new UserReview()
+            {
+                Quality = quality,
+                UserId = uid,
+                ReviewDate = DateTime.Now.ToShortDateString()
+            };
+            await _db.UserReviews!.AddAsync(ur);
+            await _db.SaveChangesAsync();
+            return ur;
+        }
     }
 }
