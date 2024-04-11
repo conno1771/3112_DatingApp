@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "../App.css";
 import { useState, useEffect } from "react";
 
-export const LoginPage = (props) => {
+const RegisterPage = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [status, setStatus] = useState("");
@@ -18,33 +18,35 @@ export const LoginPage = (props) => {
           accept: "application/json",
           "Content-Type": "application/json; charset=utf-8",
         },
-        body:JSON.stringify({ "firstName": "",
-        "lastName": "",
-        "username": "",
-        "email": username,
-        "passphrase": password,
-        "token": "",
-        "age": 0,
-        "gender": "",
-        "paid": false,
-        "isAdmin": false })
+        body: JSON.stringify({
+          "firstName": "",
+          "lastName": "",
+          "username": "",
+          "email": username,
+          "passphrase": password,
+          "token": "",
+          "age": 0,
+          "gender": "",
+          "paid": false,
+          "isAdmin": false
+        })
       });
 
       let user = await response.json();
       if (user.token === "Login Successful") {
         props.user({
-            age: user.age,
-            email: user.email,
-            firstname: user.firstname,
-            lastname: user.lastname,
-            username: user.username,
-            password: user.password,
-            gender: user.gender,
-            isPaid: user.isPaid,
-            Admin: user.Admin,
-          });
-          console.log(props);
-          loggedIn();
+          age: user.age,
+          email: user.email,
+          firstname: user.firstname,
+          lastname: user.lastname,
+          username: user.username,
+          password: user.password,
+          gender: user.gender,
+          isPaid: user.isPaid,
+          Admin: user.Admin,
+        });
+        console.log(props);
+        loggedIn();
       } else {
         setStatus("Username or Password Incorrect")
       }
@@ -93,12 +95,12 @@ export const LoginPage = (props) => {
           />
           <br />
           <div>
-          <button className="button" onClick={routeChange}>
-            Create Account
-          </button>
-          <button className="button" onClick={login}>
-            Login
-          </button>
+            <button className="button" onClick={routeChange}>
+              Create Account
+            </button>
+            <button className="button" onClick={login}>
+              Login
+            </button>
           </div>
           <p>{status}</p>
         </div>
@@ -106,3 +108,5 @@ export const LoginPage = (props) => {
     </div>
   );
 };
+
+export default RegisterPage;

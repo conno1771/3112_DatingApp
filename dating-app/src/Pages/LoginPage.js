@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "../App.css";
 import { useState, useEffect } from "react";
 
-export const LoginPage = (props) => {
+const LoginPage = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -17,16 +17,18 @@ export const LoginPage = (props) => {
           accept: "application/json",
           "Content-Type": "application/json; charset=utf-8",
         },
-        body:JSON.stringify({ "firstName": "",
-        "lastName": "",
-        "username": "",
-        "email": username,
-        "passphrase": password,
-        "token": "",
-        "age": 0,
-        "gender": "",
-        "paid": false,
-        "isAdmin": false })
+        body: JSON.stringify({
+          "firstName": "",
+          "lastName": "",
+          "username": "",
+          "email": username,
+          "passphrase": password,
+          "token": "",
+          "age": 0,
+          "gender": "",
+          "paid": false,
+          "isAdmin": false
+        })
       });
 
       let user = await response.json();
@@ -96,3 +98,5 @@ export const LoginPage = (props) => {
     </div>
   );
 };
+
+export default LoginPage;

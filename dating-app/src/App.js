@@ -1,11 +1,12 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { useState } from 'react'
-import { LoginPage } from './Pages/LoginPage';
-import RegisterPage from './Pages/RegisterPage';
-import HomePage from './Pages/HomePage';
+import LoginPage from './Pages/LoginPage.js';
+import RegisterPage from './Pages/RegisterPage.js';
+import HomePage from './Pages/HomePage.js';
+import Test from './Pages/Recommendations.js';
 
-const App = () => {
+function App() {
   const [toChild, setToChild] = useState([]);
 
   const getUserFromChild = (childProps) => {
@@ -16,9 +17,7 @@ const App = () => {
       lastname: childProps.lastname,
       username: childProps.username,
       password: childProps.password,
-      gender: childProps.gender,
-      isPaid: childProps.isPaid,
-      Admin: childProps.Admin
+      gender: childProps.gender
     })
   }
   return (
@@ -27,6 +26,7 @@ const App = () => {
         <Route path='/' element={<LoginPage user={getUserFromChild} userData={toChild} />} />
         <Route path='/register' element={<RegisterPage user={getUserFromChild} />} />
         <Route path='/home' element={<HomePage userData={toChild} />} />
+        <Route path='/test' element={<Test />} />
       </Routes>
     </BrowserRouter>
   );

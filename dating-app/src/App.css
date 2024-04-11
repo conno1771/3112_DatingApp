@@ -1,72 +1,55 @@
 .App {
+  height: 100vh;
   text-align: center;
   background-color: #46475d;
-  color: #46475d;
-  overflow-x: hidden;
-  size: 100%;
+  color: #8a7868;
 }
-html {
-  overflow: hidden;
-}
+
 .App-header {
   min-height: 100vh;
-  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: #46475d;
+  color: wheat;
 }
 
 .loginBox {
-  width: 50vw;
-  height: 50vh;
+  width: 10em;
   border-radius: 15px;
-  border: 1px solid rgb(232, 206, 157);
+  border: 1px solid wheat;
   padding: 20px;
-  background-color: rgb(246, 233, 208);
 }
-.homeBox {
-  width: 80vw;
-  height: 80vh;
+
+.profileBox {
+  width: 10em;
   border-radius: 15px;
-  border: 1px solid rgb(232, 206, 157);
+  border: 1px solid wheat;
   padding: 20px;
-  background-color: rgb(246, 233, 208);
 }
+
 .loginInput {
-  color: #46475d;
+  color: wheat;
   margin-top: 15px;
-  height: 30px;
-  width: 80%;
+  min-height: 30px;
+  min-width: 80%;
   border-radius: 5px;
-  border: 1px solid #46475d;
-  background-color: rgb(246, 233, 208);
+  border: 1px solid wheat;
+  background-color: #46475d;
 }
-.registerBox {
-  width: 15em;
-  height: auto;
-  border-radius: 15px;
-  border: 1px solid rgb(232, 206, 157);
-  padding: 20px;
-  background-color: rgb(246, 233, 208);
-}
+
 .button {
   color: wheat;
   background-color: #46475d;
   border: 1px solid wheat;
   border-radius: 5px;
-  margin-left: 5px;
-  margin-right: 5px;
-  margin-top: 20px;
+  margin: auto;
+  margin: 4px;
   padding-left: 7px;
   padding-right: 7px;
   padding-top: 2px;
   padding-bottom: 2px;
-  font-size: 1.5vw;
-  width: 15vw;
-  height: 10vh;
 }
 
 .genderButton {
@@ -101,20 +84,21 @@ li {
 .genders {
   border-left: 20%;
 }
-@media screen and (min-width: 1068){
-  .button {
-    color: wheat;
-    background-color: #46475d;
-    border: 1px solid wheat;
-    border-radius: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-top: 20px;
-    padding-left: 7px;
-    padding-right: 7px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    width: 10vw;
-    height: 5vh;
-  }
+
+.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+  text-align: left;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  top: -5px;
+  left: 0;
+  margin: 0;
+  padding: 0 8px;
+  pointer-events: none;
+  border-radius: inherit;
+  border-style: solid;
+  border-width: 1px;
+  overflow: hidden;
+  min-width: 0%;
+  border-color: wheat;
 }
